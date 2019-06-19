@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Personal website and blog by Kenneth Skovhus.]]></description><link>https://skovhus.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 19 Jun 2019 08:27:38 GMT</lastBuildDate><item><title><![CDATA[Converting an app to React Native — How to get started]]></title><description><![CDATA[This is the second part of a series on migrating existing native apps to React Native. Check out the first blog post if you want to know why…]]></description><link>https://skovhus.github.io//converting-an-app-to-react-native/</link><guid isPermaLink="false">https://skovhus.github.io//converting-an-app-to-react-native/</guid><pubDate>Fri, 13 Apr 2018 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;This is the second part of a series on migrating existing native apps to React Native. Check out &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-why-and-how-b56c02c07b96&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the first blog post&lt;/a&gt; if you want to know why we went for React Native and how we approached it.&lt;/p&gt;
+&lt;h2&gt;React Native under the hood, a crash course&lt;/h2&gt;
+&lt;p&gt;To understand how React Native works on mobile, you first need to look at the virtual DOM (Document Object Model) that is used in both React and React Native. If you’ve ever done web development, you know how the DOM works in the browser. If not, you might be interested in &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;reading up on it&lt;/a&gt;. In short: The DOM represents a page as nodes and objects. In plain React, &lt;a href=&quot;https://reactjs.org/docs/faq-internals.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the virtual DOM&lt;/a&gt; is an in-memory representation of the UI on top of the actual DOM. When a node or object changes, React will diff the virtual DOM and the actual DOM, and only update those nodes or objects that have changed. In React Native, there is no browser DOM. Instead, the virtual DOM is rendered into native iOS or Android views.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 48.309178743961354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABoklEQVQoz41R227aQBDl6/MPlfKQt/SlamnSVI2b0EItEgxVGnACDg3g2Hix17e92MaXna4NDVKfKh3tnpk9Z2dnthUwqMEhSiBMIOI1Ql4n64zk7JCUmb2+QWu3YVK9IGq5zMLF0i3WQeXFhYkICjInrFZubvul42cvG4qJ+NfsRqXjMQdzJyw3UeXGYhPlK4cgP5P3NqFAwVYWkOHB7DPwqRAAvXH8Q48kwVSQDGgm3rTNpV/QUr4LthXM1+nxhcWzugV/ZyYpeKS8HGLT3ap6/P2Xn+ZismAfb/CSgTn4th4oJcDXkadOYhtD76n77DlxIv2iJZvsjaO3HaSv+JOdHH8ybZy/u2XdzoivdO3mvn+tPq7hfTdQJprHwvb96cSe0bQxm15x8sUazsh5H/XGgWYwfUHaykNojGZX7fO7XJvnyk+rM7bv7Nv+74E67y48tK/Mc7gc+lOTGlbyWcMFQBDy59MjnmZXenymIgB4RIYy/ZBL5cPZ1DFk23JM+4HJtndfKgmm0IwQAnlMK0n+QqqFXGswcfiqWtoEr+Q/8Qek4CVmf+MzFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;&lt;/span&gt;
+    &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Virtual DOM in React and React Native&quot;
+        title=&quot;&quot;
+        src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/b9e4f/react-native-vdom.png&quot;
+        srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/cf440/react-native-vdom.png 148w,
+/static/e964a98fe5f036fb3805b0a58b517587/d2d38/react-native-vdom.png 295w,
+/static/e964a98fe5f036fb3805b0a58b517587/b9e4f/react-native-vdom.png 590w,
+/static/e964a98fe5f036fb3805b0a58b517587/f9b6a/react-native-vdom.png 885w,
+/static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png 1035w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+  &lt;/span&gt;
+  &lt;/a&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Virtual DOM in React and React Native&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;While you write plain JavaScript and JSX (tag syntax that is an extension to JavaScript) to define how your React Native app should look and behave, the UI is still rendered natively. Whenever there is a change in one of the nodes or objects, React Native will update the relevant parts of the UI automatically.&lt;/p&gt;
+&lt;p&gt;This is what sets React Native apart from other cross-platform solutions. Rendering native components significantly speeds up interaction with the app, and while this also introduces some complexities (sometimes you will need to create a custom UI component), for us, it was definitely a good trade-off.&lt;/p&gt;
+&lt;h2&gt;Navigation is hard&lt;/h2&gt;
+&lt;p&gt;Navigation has always been a bit of a problem on React Native, but the vast amount of packages that are available show that this area is under development. Ideally, Facebook would create or, at least, recommend one solution. But for now, that’s not the case, and we all have to choose a third party library and stick with it. For us, the main contenders were &lt;a href=&quot;https://github.com/react-navigation/react-navigation&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;react-navigation&lt;/a&gt; and &lt;a href=&quot;https://github.com/wix/react-native-navigation&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;wix/react-native-navigation&lt;/a&gt;. The first is very flexible and runs everything purely in JavaScript, while the second one is based on native navigation on both platforms. We decided to go with react-native-navigation because we felt like native components would make the app feel more familiar to our users.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;EDIT FROM JANUARY 2019: the native feel of react-native-navigation didn’t make up for the amount of Android bugs, tight coupling with screen components, and non-declarative API. We &lt;a href=&quot;https://twitter.com/kenneth_skovhus/status/1076186546322243584&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;migrated to react-navigation&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Getting used to JavaScript&lt;/h2&gt;
+&lt;h4&gt;JavaScript? No, thanks&lt;/h4&gt;
+&lt;p&gt;In mobile development circles, most people cringe at the thought of writing an entire app in JavaScript. Why would you even do such a thing? JavaScript has a lousy reputation, and rightfully so. If you worked with JavaScript a decade ago, you likely had a horrible experience. Suitable for small scripts on websites, but not ideal for developing an application of any significant size.&lt;/p&gt;
+&lt;p&gt;However, things have changed, and over the last ten years there have been significant development efforts in tooling, frameworks, and engines. We saw the creation of &lt;a href=&quot;https://jquery.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;jQuery&lt;/a&gt;, &lt;a href=&quot;https://developers.google.com/v8/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;V8&lt;/a&gt;, &lt;a href=&quot;https://nodejs.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Node&lt;/a&gt;, &lt;a href=&quot;http://backbonejs.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Backbone&lt;/a&gt;, … All of these efforts propelled JavaScript into one of the most used languages in the world. Today, Google’s &lt;a href=&quot;https://angularjs.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Angular&lt;/a&gt; and Facebook’s &lt;a href=&quot;https://reactjs.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React&lt;/a&gt; are the two most popular JavaScript frameworks. They are used by Google and Facebook themselves and provide a solid foundation for app development.&lt;/p&gt;
+&lt;h4&gt;Modern JavaScript&lt;/h4&gt;
+&lt;p&gt;JavaScript itself also saw significant advances in the last few years. When &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;EcmaScript 6&lt;/a&gt; came out, developers finally had access to features that were already common in most modern programming languages, such as classes, arrow functions (aka lambdas), string interpolation, &lt;code class=&quot;language-text&quot;&gt;let&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt;, and &lt;a href=&quot;https://github.com/lukehoban/es6features&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;many more&lt;/a&gt;. Meanwhile, &lt;a href=&quot;http://coffeescript.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CoffeeScript&lt;/a&gt; and &lt;a href=&quot;https://babeljs.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Babel&lt;/a&gt; pioneered &lt;a href=&quot;https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;transpilation&lt;/a&gt; so everyone could start using new language features that were not yet implemented by all browsers or engines. ES 7 and 8 kept on advancing the language significantly, and by now we can say that JavaScript can be a very nice language to work with.&lt;/p&gt;
+&lt;p&gt;Of course, it’s not all sunshine and rainbows. While the language itself is getting better, it is still difficult to set up a good development environment. Because of the dynamic nature of the language, doing something as simple as renaming a variable can still be a challenge. Coming from Android, you might find JetBrains’ &lt;a href=&quot;https://www.jetbrains.com/idea/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;IntelliJ&lt;/a&gt; useful, because of its familiarity. Web developers tend to stick with editors like &lt;a href=&quot;https://code.visualstudio.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;VSCode&lt;/a&gt; or &lt;a href=&quot;https://atom.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Atom&lt;/a&gt; when they go to React Native. As long as the plugins are there to support what you need, you can use any editor you want.&lt;/p&gt;
+&lt;p&gt;We found that a lot of JavaScript’s shortcomings can be countered with internal coding conventions and a good tooling setup to enforce them. Once you get into the habit of writing good, idiomatic JavaScript in a proper architecture, it becomes quite nice, even when you come from Swift or Kotlin in native land.&lt;/p&gt;
+&lt;h2&gt;Tooling&lt;/h2&gt;
+&lt;p&gt;After we understood how React Native works and decided to make peace with JavaScript, we wanted to make sure we had the right tooling set up to enforce best practices, and that the native developers on our team are made aware when they write non-idiomatic JavaScript. The setup, with a variety of tools from the JavaScript and React ecosystem, also helps us write more maintainable code that is easier to read.&lt;/p&gt;
+&lt;h4&gt;Static analysis and code consistency&lt;/h4&gt;
+&lt;p&gt;The dynamic and loosely-typed nature of JavaScript makes it especially prone to runtime errors. To help us find these errors before running the app, we use &lt;a href=&quot;https://eslint.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ESlint&lt;/a&gt;. ESlint also helps us see dead code and detect problematic patterns that sneak into the codebase. Our configuration is based on the widely used &lt;a href=&quot;https://www.npmjs.com/package/eslint-config-airbnb&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;eslint-config-airbnb&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Although ESlint can also check that a codebase adheres to a specific style guideline, we strongly believe that a code style should be enforced by a tool. Instead of debating over coding style, we use &lt;a href=&quot;https://prettier.io/docs/en/why-prettier.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Prettier&lt;/a&gt; to format our code. It &lt;a href=&quot;https://github.com/prettier/eslint-plugin-prettier&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;integrates&lt;/a&gt; with ESlint, so when hitting save in our editor the code is formatted and statically analyzed.&lt;/p&gt;
+&lt;h4&gt;State management&lt;/h4&gt;
+&lt;p&gt;For state management, we enjoy the simplicity and testability of &lt;a href=&quot;https://redux.js.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Redux&lt;/a&gt;. We use the &lt;a href=&quot;https://github.com/rt2zz/redux-persist&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;redux-persist&lt;/a&gt; middleware to read and write parts of our Redux store to disk.&lt;/p&gt;
+&lt;h4&gt;Static type checking&lt;/h4&gt;
+&lt;p&gt;We started rebuilding the application in React Native without types. But as the application grew, it became clear that a static type checking tool like Flow or TypeScript would help us refactor and discover bugs. The more of the codebase we covered with types, the more bugs we uncovered.&lt;/p&gt;
+&lt;p&gt;TypeScript by Microsoft and Flow by Facebook are similar tools, providing gradual static typing capabilities, a similar syntax, and widespread usage.&lt;/p&gt;
+&lt;p&gt;For React Native, Flow was a natural choice. It integrates nicely with the build tool, and most third-party libraries already provide Flow types.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;EDIT FROM JANUARY 2019: After TypeScript gained more momentum, we decided to give TypeScript another change. We migrated most of our projects to TypeScript and didn’t look back. The editor support and the library support is 👌&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A type checker is not a silver bullet, though. The learning curve is steep, and you find yourself fighting the type system. But we are happy that a lot of development is happening in this area. One of the most promising options for the future is &lt;a href=&quot;https://reasonml.github.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Reason&lt;/a&gt; (also by Facebook), a type-safe language build on top of OCaml which compiles to very readable JavaScript.&lt;/p&gt;
+&lt;h4&gt;Storybook as a productivity booster&lt;/h4&gt;
+&lt;p&gt;Storybook is a UI development environment for your UI components. With it, you can visualize different states of your UI components and develop them interactively.&lt;/p&gt;
+&lt;p&gt;If we were to dream up a productive setup for developing UI components and screens, it would:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Work on components and screens in isolation without starting the entire application&lt;/li&gt;
+&lt;li&gt;Be able to describe and quickly switch between components and screens in different states&lt;/li&gt;
+&lt;li&gt;Support hot reloading when styles and markup changes&lt;/li&gt;
+&lt;li&gt;Have multiple simulators and cross-platform devices connected and see them all update when updating the code&lt;/li&gt;&lt;/ul&gt;&lt;p &gt;We are happy to see that &lt;a href=&quot;https://storybook.js.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Storybook&lt;/a&gt; delivers all of these. It is a major productivity booster when developing UIs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Automated testing&lt;/h4&gt;
+&lt;p&gt;For unit and integration testing, we are using &lt;a href=&quot;https://facebook.github.io/jest/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jest&lt;/a&gt;—another great open source tool by Facebook. It provides a testing framework with excellent watch mode, coverage support, fairly simple mocking and swift feedback when writing tests. As it runs in Node, you mock out all native components (though it requires some &lt;a href=&quot;https://github.com/facebook/react-native/blob/1490ab12ef156bf3201882eeabfcac18a1210352/jest/setup.js&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;setup&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;We have experimented with Appium and Amazon Device Farm for cross-platform UI automation tests. But currently, we’re focusing on a solid and fast unit testing setup that helps us catch bugs and documents the expected behavior of our code.&lt;/p&gt;
+&lt;h4&gt;Editor support&lt;/h4&gt;
+&lt;p&gt;Everyone on the team uses their preferred editor, whether it be Visual Studio Code, Atom, or IntelliJ IDEA. To have a good and consistent development experience we ensure that all of our editors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Show ESlint errors&lt;/li&gt;
+&lt;li&gt;Call eslint  -- fix on file save (we never do manual formatting, we have Prettier for that)&lt;/li&gt;
+&lt;li&gt;Understand Flow declarations, so we get autocompletion and type errors in the editor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What’s next?&lt;/h2&gt;
+&lt;p&gt;While we are quite happy with the current setup, there is room still for improvement. One thing we want to do is to have a big set of UI tests. We’re not entirely sure yet what the best option for that would be. But in general, we now have a solid foundation on which we can build more features, and we have great checks in place that make sure our code adheres to best practices and our internal style. The development cycle is also a lot faster because of the unit tests and Storybook.&lt;/p&gt;
+&lt;p&gt;There is one more thing we feel is important when converting to React Native, and that is native modules and UI components. We will cover that in our next blog post.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Co-authored by &lt;a href=&quot;http://www.kevinpelgrims.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Kevin Pelgrims&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-how-to-get-started-924548ff6c62&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Leo Innovation Labs’ medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Type safe CSS Modules with Flow]]></title><description><![CDATA[I’ve been dreaming about type safety and editor autocompletion when using CSS Modules. There are a few TypeScript tools for this (see this…]]></description><link>https://skovhus.github.io//type-safe-css-modules-with-flow/</link><guid isPermaLink="false">https://skovhus.github.io//type-safe-css-modules-with-flow/</guid><pubDate>Wed, 21 Jun 2017 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.87500000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAABGUlEQVQoz6WSz2qEMBDGfea+R19A8AFEQejBkwUvLkUQESsWVw/ZFcq2cdX1D1LNpKPWZWULFvqRw+RLfsxkJgL/h4Su68qyvKyFTl3X2zDeQ54xNtwIt0VRYLABY56+7+8P0N+Gq6pq2/aaEC0AuINhWWs4yzLHcUzT1HXdMAwEZhjLXlW0gDDpB87zPI7jKIpc1/U87wo0TTMVMt072fwg8+GMFABbNSwMQ8R83w+CIEkSQkiappZloXMpizFbE0PywPPnICL7/Ruln9k5w8cKlFJZliVJUhRFVdWnRaIoapp2PB5G+OsDwkd+2pF3atsv/qtv7SwseZzz3DPcYDAPGWOc8+3zOBs4jP0b2NjX2Rf+9pfgV/cb6hpym38PEJIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;&lt;/span&gt;
+    &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
+        title=&quot;&quot;
+        src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/b9e4f/css-modules-flow.png&quot;
+        srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/cf440/css-modules-flow.png 148w,
+/static/82781fd79c387e48bc41c57f9f86025a/d2d38/css-modules-flow.png 295w,
+/static/82781fd79c387e48bc41c57f9f86025a/b9e4f/css-modules-flow.png 590w,
+/static/82781fd79c387e48bc41c57f9f86025a/f9b6a/css-modules-flow.png 885w,
+/static/82781fd79c387e48bc41c57f9f86025a/2d849/css-modules-flow.png 1180w,
+/static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png 1600w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+  &lt;/span&gt;
+  &lt;/a&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;CSS Modules + Flow = type safety and editor autocompletion&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been dreaming about type safety and editor autocompletion when using &lt;a href=&quot;https://github.com/css-modules/css-modules&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CSS Modules&lt;/a&gt;. There are a few TypeScript tools for this (see &lt;a href=&quot;https://medium.com/@sapegin/css-modules-with-typescript-and-webpack-6b221ebe5f10&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://github.com/Quramy/typed-css-modules&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;this&lt;/a&gt;), but I didn’t find any solid tools for &lt;a href=&quot;https://flow.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Flow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;TL;DR I’ve made some &lt;a href=&quot;https://github.com/skovhus/css-modules-flow-types&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;new tools&lt;/a&gt;, and when trying them on a codebase I’m working on, Flow found &lt;strong&gt;a lot of dead code (and potential bugs)&lt;/strong&gt;&lt;/em&gt; 😬&lt;/p&gt;
+&lt;h2&gt;The problems&lt;/h2&gt;
+&lt;p&gt;It is quite easy to misspell a class name or forget to update consumers after removing a class in a .css file. As an example, the class &lt;code class=&quot;language-text&quot;&gt;foo&lt;/code&gt; might not be defined in &lt;code class=&quot;language-text&quot;&gt;Button.css&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* @flow */&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; styles &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./Button.css&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;Button&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;button className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;styles&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Solutions&lt;/h2&gt;
+&lt;p&gt;To teach Flow about CSS Modules file, we can create a definition file &lt;code class=&quot;language-text&quot;&gt;Button.css.flow&lt;/code&gt; containing the class names exposed by &lt;code class=&quot;language-text&quot;&gt;Button.css&lt;/code&gt;. By doing so we can get:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;static type checks showing usage of non existing classes&lt;/li&gt;
+&lt;li&gt;editor autocompletion of CSS classes (for editors supporting Flow)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To generate these .flow files I was thinking of two use cases. One using a simple CLI and another using webpack.&lt;/p&gt;
+&lt;h3&gt;Solution: CLI&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/css-modules-flow-types-cli&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;css-modules-flow-types-cli&lt;/a&gt; is a CLI that quickly generate .flow files.&lt;/p&gt;
+&lt;p&gt;Let us install it:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --save-dev css-modules-flow-types-cli
+
+# or
+
+yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And then just run the CLI on your source directory:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;css-modules-flow-types src&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I recommend using the CLI on your CI system (like Travis or Circle) to ensure that all .flow files are up-to-date before running Flow. This will catch potential styling errors before deploying.&lt;/p&gt;
+&lt;p&gt;Another use case is quick feedback loop when developing and changing CSS Modules files. The CLI includes a watch mode for this, but I myself would like to avoid having yet another tool that needs to be running while developing. As a lot of people already have webpack running, I did a small loader consuming the tokens from style-loader.&lt;/p&gt;
+&lt;h3&gt;Solution: webpack loader&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/css-modules-flow-types-loader&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;css-modules-flow-types-loader&lt;/a&gt; is a webpack loader keeping .flow files updated by consuming the tokens from &lt;code class=&quot;language-text&quot;&gt;style-loader&lt;/code&gt;. I recommend using this when developing as part of a webpack-dev-server setup. It will give a small slowdown, as the loader potentially needs write a lot of files.&lt;/p&gt;
+&lt;p&gt;To get started:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --save-dev css-modules-flow-types-loader&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then update your webpack config:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  test&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/\.css$/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// or the file format you are using&lt;/span&gt;
+  use&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;style-loader&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;css-modules-flow-types-loader&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// right after style-loader&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Other loaders like css-loader after this:&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And then sit back and enjoy CSS Modules being type checked by Flow. 🍺&lt;/p&gt;
+&lt;p&gt;Please let me know what you think… And give a little ⭐️over at &lt;a href=&quot;https://github.com/skovhus/css-modules-flow-types&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://hackernoon.com/type-safe-css-modules-with-flow-dd95e761bbe5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React PropTypes to Flow codemod]]></title><description><![CDATA[I’m presenting how to automatically convert your existing codebase using React PropTypes to use more powerful Flow annotations. If you…]]></description><link>https://skovhus.github.io//react-prop-types-to-flow-codemod/</link><guid isPermaLink="false">https://skovhus.github.io//react-prop-types-to-flow-codemod/</guid><pubDate>Tue, 11 Apr 2017 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;I’m presenting how to automatically convert your existing codebase using React PropTypes to use more powerful Flow annotations. If you already seen why this is valuable, you can skip down to the next section.&lt;/em&gt; 👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAFU9qhZcCOoWGkZof/EABsQAAMAAwEBAAAAAAAAAAAAAAABEQIDEiIz/9oACAEBAAEFAs8Br09ZsZl9oVcxXoRSs//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABsQAAEEAwAAAAAAAAAAAAAAAAABAhBxESAh/9oACAEBAAY/Arliodhtmdf/xAAcEAADAQEAAwEAAAAAAAAAAAAAAREhMUFhkVH/2gAIAQEAAT8hQnlqKEZalEXW/hTiPLxnweql30Nm/BbfRKl0dxFfp7D/2gAMAwEAAgADAAAAEBDDPP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABwQAQACAgMBAAAAAAAAAAAAAAEAESExQVFhsf/aAAgBAQABPxBbUsA57I46o08TUBrQn5LdumD0hvgtIdWFlmLQF6PKigMkMjkEpV4h3o92f//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;&lt;/span&gt;
+    &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
+        title=&quot;&quot;
+        src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c739e/flow-unsplash.jpg&quot;
+        srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/8ee9c/flow-unsplash.jpg 148w,
+/static/4822d2d94a48a54d885e84246876a4ac/ebbe7/flow-unsplash.jpg 295w,
+/static/4822d2d94a48a54d885e84246876a4ac/c739e/flow-unsplash.jpg 590w,
+/static/4822d2d94a48a54d885e84246876a4ac/5413e/flow-unsplash.jpg 885w,
+/static/4822d2d94a48a54d885e84246876a4ac/4efde/flow-unsplash.jpg 1180w,
+/static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg 1200w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+  &lt;/span&gt;
+  &lt;/a&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Eye candy, because you deserve it (unsplash.com/@thekorus)&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;If React were Facebook’s gateway drug to declarative and composable UI, React PropTypes introduced a lot of people to type checking.&lt;/p&gt;
+&lt;p&gt;PropTypes documents a given component’s props and gives runtime validation of props during development. I find them really helpful, but they also have &lt;a href=&quot;http://technologyadvice.github.io/eradicate-runtime-errors-in-react-with-flow/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;several shortcomings&lt;/a&gt;. Most notably we should aim to catch errors before opening our browser. Say hello to static type checking.&lt;/p&gt;
+&lt;p&gt;To statically type-check an application, you can use JavaScript extensions like &lt;a href=&quot;https://flow.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Flow&lt;/a&gt; or &lt;a href=&quot;https://www.typescriptlang.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TypeScript&lt;/a&gt;. In this blog post I’m focusing on Flow, but the same approach can be applied to TypeScript.&lt;/p&gt;
+&lt;h2&gt;No doubt (to me): Static type checking (using Flow or TypeScript) at build time is vastly superior to runtime validation.&lt;/h2&gt;
+&lt;p&gt;If you are new to Flow, the &lt;a href=&quot;https://flow.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;new documentation is really good&lt;/a&gt;. After setting up Flow you can now start type annotating your components state and props. For a simple component it might look like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* 1) Using good old PropTypes */&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; message &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+Button&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;propTypes &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;oneOfType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;string&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;number&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;instanceOf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Message&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;isRequired&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/* 2) Using Flow annotations */&lt;/span&gt;
+type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; string &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; number &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Message&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; message &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So far so good. But transitioning an existing codebase to use Flow annotations instead of PropTypes can be tedious… However this is a perfect task for a codemod!&lt;/p&gt;
+&lt;h2&gt;Time to mod the code&lt;/h2&gt;
+&lt;p&gt;To automate the conversion of React PropTypes to Flow annotations, we are using another tool popularized by Facebook: &lt;a href=&quot;https://github.com/facebook/jscodeshift&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;jscodeshift&lt;/a&gt; (JavaScript codemod toolkit).&lt;/p&gt;
+&lt;p&gt;If the concept of automated refactoring with codemods is new to you, I’ll promote a meetup talk I did: &lt;a href=&quot;https://www.youtube.com/watch?v=eMI0UBav8Q4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;“Introduction to automated refactoring with JS codemods (Copenhagen.js Meetup, December 2016)”&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eMI0UBav8Q4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/eMI0UBav8Q4/0.jpg&quot; alt=&quot;Introduction to automated refactoring with JS codemods (Copenhagen.js Meetup, December 2016)&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Enough talk. Time to get rid of the PropTypes! Turns out &lt;a href=&quot;https://github.com/billyvg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Billy Vong&lt;/a&gt; already did a lot of the hard work for us with &lt;a href=&quot;https://github.com/billyvg/codemod-proptypes-to-flow&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;codemod-proptypes-to-flow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So to automatically convert all components in a folder my-components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git clone https://github.com/billyvg/codemod-proptypes-to-flow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;jscodeshift -t codemod-proptypes-to-flow/src/index.js my-components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Look no PropTypes! (Although &lt;code class=&quot;language-text&quot;&gt;createClass&lt;/code&gt;, imported and custom PropTypes validators are not supported — yet!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’ve successfully used this codemod for multiple projects, and it eased the transition remarkably. Now Flow starts finding errors while you write code instead of when the code is executed! 🍷 🙌🏻&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Notice that there are cases where you want to keep your PropTypes (possible alongside Flow annotations):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PropTypes in library code can help consumers and document an interface&lt;/li&gt;
+&lt;li&gt;If you have no automated tests validating your flow definitions of any external resources (like an API), PropTypes can be really helpful. For this I would recommend using &lt;a href=&quot;https://github.com/brigand/babel-plugin-flow-react-proptypes&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;babel-plugin-flow-react-proptypes&lt;/a&gt; to add PropTypes at build time&lt;/li&gt;
+&lt;li&gt;PropTypes are still great for learning material on React (no need to burden new people with Flow/TypeScript)&lt;/li&gt;
+&lt;li&gt;PropTypes can be more flexible than what the Flow type-checker currently supports (e.g. &lt;a href=&quot;https://twitter.com/Daniel15/status/851232924225556480&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;validating a number is in a particular range&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Thanks to &lt;a href=&quot;https://twitter.com/penzington&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Maciek Pekala&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/Mads_Hartmann&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Mads Hartmann&lt;/a&gt; for reviewing this post.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://hackernoon.com/type-safe-css-modules-with-flow-dd95e761bbe5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Abandoning the mothership]]></title><description><![CDATA[The time had come to pour into our front-end code the same poison we had given our back-end systems.For many years, issuu’s engineering…]]></description><link>https://skovhus.github.io//abandoning-the-mothership/</link><guid isPermaLink="false">https://skovhus.github.io//abandoning-the-mothership/</guid><pubDate>Tue, 27 Sep 2016 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;The time had come to pour into our front-end code the same poison we had given our back-end systems.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 62.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQGA//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAZ9tQKAxD//EABoQAAICAwAAAAAAAAAAAAAAAAEEAgMAEBL/2gAIAQEAAQUCxYgWzQ720zbCz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EAB0QAAICAQUAAAAAAAAAAAAAAAECABEiEBIhUfH/2gAIAQEABj8CmXsDLhY5XrUBWobRP//EABoQAQEAAgMAAAAAAAAAAAAAAAERADEQQbH/2gAIAQEAAT8hwOxIwdLocVQQOyuYJDwz/9oADAMBAAIAAwAAABDQz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQEBAAIDAAAAAAAAAAAAAAERADFBIVGR/9oACAEBAAE/EArDUuRjFhyBgveQuoHh2g+sa6h4UDlaV+7/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;&lt;/span&gt;
+    &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Abandoning the mothership&quot;
+        title=&quot;&quot;
+        src=&quot;/static/39811723aaa825729504ddb878b338eb/c739e/deathstar.jpg&quot;
+        srcset=&quot;/static/39811723aaa825729504ddb878b338eb/8ee9c/deathstar.jpg 148w,
+/static/39811723aaa825729504ddb878b338eb/ebbe7/deathstar.jpg 295w,
+/static/39811723aaa825729504ddb878b338eb/c739e/deathstar.jpg 590w,
+/static/39811723aaa825729504ddb878b338eb/5413e/deathstar.jpg 885w,
+/static/39811723aaa825729504ddb878b338eb/4efde/deathstar.jpg 1180w,
+/static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg 1600w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+  &lt;/span&gt;
+  &lt;/a&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Abandoning the mothership&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;For many years, issuu’s engineering group was organized around component teams. Our late great Team Monster handled the front-end code and the rest of the teams provided APIs and back-end infrastructure.&lt;/p&gt;
+&lt;p&gt;As we scaled the engineering organization, this classical split became counterproductive. A lot of cross team coordination was required for releases. Business logic and remappings were spread across multiple layers of the application. Dependencies and ownership of features were unclear. Finally, the Monsters had way too much on their plate!&lt;/p&gt;
+&lt;p&gt;So in 2013, several of our teams transitioned from component teams to customer-centric, cross-component feature teams. One focused on the end-to-end reading experience, another team handled all publisher-related features and so on. Next was taking ownership of the entire code stack, from database to front end. Our back-end system quickly transitioned into smaller microservices written in technologies the team deemed best (OCaml, Erlang, Python, node.js, MySQL, Postgres, Redis, AMQP).&lt;/p&gt;
+&lt;p&gt;Until recently, though, the front-end code running issuu.com was still one big, monolithic codebase. It had turned into such an unmanageable beast that we were all fighting with each other to get features out to users. We identified several blockers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;With one big pile of code, team ownership and dependencies were unclear;&lt;/li&gt;
+&lt;li&gt;we stepped on other people’s toes all the time;&lt;/li&gt;
+&lt;li&gt;and as a result the rate of feature deployment decreased. (Oh yes, big-bang releases!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Besides, we had a major technology lockdown due to a very customized build system. This alone was around 3.000 lines of code, including a home-built Browserify and a lot of magical grunt tasks. As nobody dared to touch that part of the system, we were locked to our own require system, ES5 and Ruby SASS. Also the size of the codebase made builds painfully slow.&lt;/p&gt;
+&lt;p&gt;It was time to pour into our front-end code the same poison we gave our back-end systems, splitting it all apart into maintainable chunks. Our vision was to make each feature team own, build and deploy its front-end code autonomously – and to make things that ought to be trivial actually trivial!&lt;/p&gt;
+&lt;h2&gt;To the lifeboats!&lt;/h2&gt;
+&lt;p&gt;We started by dividing the front-end codebase into four chunks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;shared serving infrastructure;&lt;/li&gt;
+&lt;li&gt;pages;&lt;/li&gt;
+&lt;li&gt;widgets;&lt;/li&gt;
+&lt;li&gt;and UI components.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 27.832512315270936%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsSAAALEgHS3X78AAABkUlEQVQY0z3Ly07CQBQG4D6UJm5AjZHSThlQgZbSlkTEhSZGfRhNXGjibYYgorGVmOjKQYPEmNgG0Vew0/EGuHRoGhd/5sw53y/EZYXFJUD5SyeBwqaB8hUHCo1JcpDM5gNYNCjUCt9QNxhQC3RagUFMBnQKKB8jG+M93g/iMvB570fAObmLtZSHs9LL4bzY2c0krvBCsofVlFfT015dS/X2c/JlTQVPdT3drRagh3NS72BOvNvLJK6r2eRr2M8DFy2IbwJdytyzzVKLltNt30g0AzOx45vJDlszSLCqkXdTeqCWtP1uiDd+Ze6ebZSIX4Ydaoqn3O75lvTI1i0SrKjEt+SOMECw1T9SyAClybBhtoYNqzWo5clo1z9O3fYRbP8iuMXdNf/fhRZnyMgNz0rc5v4tN23BRrrnIN0NU1t0nZOK62DLtcNd8bmJjG69ajoOMh6b2IhskdtyZE036j/bx/qrMF7XPnlYmBOVJ89nlY3xxM5LbOZiiUn28s+sXfmYsStsolEMb6GLbNQPeAZ/XOAR5sZCZo0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;&lt;/span&gt;
+    &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Partitioning our frontend-end code base&quot;
+        title=&quot;&quot;
+        src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/b9e4f/infrastructure.png&quot;
+        srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/cf440/infrastructure.png 148w,
+/static/94804a1eeb24eeb80466e8118e2d738a/d2d38/infrastructure.png 295w,
+/static/94804a1eeb24eeb80466e8118e2d738a/b9e4f/infrastructure.png 590w,
+/static/94804a1eeb24eeb80466e8118e2d738a/f9b6a/infrastructure.png 885w,
+/static/94804a1eeb24eeb80466e8118e2d738a/2d849/infrastructure.png 1180w,
+/static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png 1218w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+  &lt;/span&gt;
+  &lt;/a&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Partitioning our frontend-end code base&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;shared serving infrastructure&lt;/strong&gt; is a thin horizontal node.js application responsible for routing and serving &lt;strong&gt;pages&lt;/strong&gt;. It holds the configuration for which version of a page to be served.&lt;/p&gt;
+&lt;p&gt;A feature team delivers products consisting of the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pages&lt;/strong&gt; (node.js handlers, templates and assets like compiled JavaScript/CSS);&lt;/li&gt;
+&lt;li&gt;and some &lt;strong&gt;widgets&lt;/strong&gt; (shared functionality used on multiple pages, like a message hub, streams or drag-and-drop functionality to initiate a publication upload).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Our &lt;strong&gt;UI component&lt;/strong&gt; package provides high-level building blocks and styling for the site. It is our shared horizontal toolkit for keeping a consistent look and not reinventing buttons, form elements, modals and colors for each page and widget.&lt;/p&gt;
+&lt;p&gt;To handle internal code dependencies, we decided to use the same tool we use for all other dependencies in JavaScript: &lt;a href=&quot;https://www.npmjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;npm&lt;/a&gt;. So we set up a &lt;strong&gt;private npm repository&lt;/strong&gt; using the open-source &lt;a href=&quot;https://github.com/rlidwka/sinopia&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sinopia tool&lt;/a&gt;. When pushing code on master for one of our front-end repositories, our CI server will test and publish a new version of the package to Sinopia.&lt;/p&gt;
+&lt;p&gt;To release a change to a page, you simply bump the product version in the shared webserver package. The package.json for our webserver looks like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;issuu-productA&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.2&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;issuu-productB&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;2.0.292&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;issuu-productC&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.x&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To follow the principle of least astonishment, most of our top-level packages are locked to a specific version of a page, but some packages like Marketing pages will always take the newest version.&lt;/p&gt;
+&lt;p&gt;How did we migrate to this? After the initial serving infrastructure was ready, we made it up to the feature teams to take ownership of the old mothership codebase and turn it into a product/widget in the new world. Of course, the mothership still holds tight to some old products we never touch and that no team really owns. &lt;strong&gt;In the end, it is all about ownership.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After a few months, the old monolithic codebase is split into 45 packages. Oh, 46 now!&lt;/p&gt;
+&lt;h2&gt;A new hope&lt;/h2&gt;
+&lt;p&gt;Instead of the old, frustrating technology lockdown, over the last six months a lot our feature teams have been innovating on the tools they have for building products. Most of the teams use the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Makefiles for orchestrating everything why &lt;a href=&quot;https://algorithms.rdio.com/post/make/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;reinvent the wheel&lt;/a&gt;?;&lt;/li&gt;
+&lt;li&gt;Webpack for building assets;&lt;/li&gt;
+&lt;li&gt;Babel for allowing us to write slick ES6 code that transpiles to ES5;&lt;/li&gt;
+&lt;li&gt;a move to React and Redux;&lt;/li&gt;
+&lt;li&gt;strict linting using (ESLint)[http://eslint.org]&lt;/li&gt;
+&lt;li&gt;and more as we go. Nothing stops a team from trying out TypeScript, CSS Modules, Elm, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We are now able to work on isolated, vertical features without worrying about stepping on toes. Deployment time went from 30 minutes to just a few minutes, as we are rebuilding only what have changed and not the entire codebase. We went from a few weekly deploys to multiple times daily &amp;#x26;mdash; continuous delivery for the win!&lt;/p&gt;
+&lt;p&gt;The one constraint for a product is that it can be served by node. Heck, we are already talking about breaking the horizontal node server into smaller servers and letting the top-level routing logic reside in a proxy configuration. Ultimate autonomy to the team.&lt;/p&gt;
+&lt;h2&gt;A note on sharing code, and lessons learned&lt;/h2&gt;
+&lt;p&gt;We want to make fast iterations on products and sustain team autonomy. Our new system is optimized for changes in issuu’s vertical products, not for making horizontal changes easier. It highlights clearly that we still have a lot of horizontal dependencies.&lt;/p&gt;
+&lt;p&gt;In our old mothership repository, it is very easy to make a horizontal change and share a lot of code between products. One thing the code split has highlighted is that developers intuitively love to share code. Instead of copying and pasting small pieces, we would rather generalize it into shared components. This comes at a high cost: You now have yet another dependency, and &lt;strong&gt;dependencies slow you down&lt;/strong&gt;. You lose autonomy and make simple things complex.&lt;/p&gt;
+&lt;p&gt;On the scale of a single product or feature, team code reuse and the &lt;a href=&quot;https://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;principle of DRY&lt;/a&gt; still make sense. But one should be careful about sharing code between products as shared dependencies are cumbersome. Of course, you never want to duplicate business logic, but I would much rather duplicate simple components than share them between verticals.&lt;/p&gt;
+&lt;p&gt;Still, redundancy sucks, right? I’m going to end with a quote from the excellent post by &lt;a href=&quot;http://yosefk.com/blog/redundancy-vs-dependencies-which-is-worse.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Yossi Kreinin&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Redundancy always means duplicated efforts, and sometimes interoperability problems. But dependencies are worse. The only reasonable thing to depend on is a full-fledged, real module, not an amorphous bunch of code. You can usually look at a problem and guess quite well if its solution has good chances to become a real module, with a real owner, with a stable interface making all its users happy enough. If these chances are low, pick redundancy. And estimate those chances conservatively, too. Redundancy is bad, but dependencies can actually paralyze you. I say kill dependencies first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted at &lt;a href=&quot;https://engineering.issuu.com/2015/12/16/abandoning-mothership&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;issuu’s engineering blog&lt;/a&gt; and on &lt;a href=&quot;https://medium.com/@skovhus/abandoning-the-mothership-2d15b7e9313e&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;medium&lt;/a&gt;. This is the second part of our series “Toward a maintainable front-end”, the first part is &lt;a href=&quot;https://engineering.issuu.com/2015/09/15/mess-management.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
