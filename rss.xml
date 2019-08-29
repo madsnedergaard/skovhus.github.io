@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio and blog by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 25 Aug 2019 15:32:18 GMT</lastBuildDate><item><title><![CDATA[Converting an app to React Native — How to get started]]></title><description><![CDATA[This is the second part of a series on migrating existing native apps to React Native. Check out the first blog post if you want to know why…]]></description><link>https://skovhus.github.io/converting-an-app-to-react-native/</link><guid isPermaLink="false">https://skovhus.github.io/converting-an-app-to-react-native/</guid><pubDate>Fri, 13 Apr 2018 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;This is the second part of a series on migrating existing native apps to React Native. Check out &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-why-and-how-b56c02c07b96&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the first blog post&lt;/a&gt; if you want to know why we went for React Native and how we approached it.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio and blog by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 29 Aug 2019 08:30:08 GMT</lastBuildDate><item><title><![CDATA[Converting an app to React Native — How to get started]]></title><description><![CDATA[This is the second part of a series on migrating existing native apps to React Native. Check out the first blog post if you want to know why…]]></description><link>https://skovhus.github.io/converting-an-app-to-react-native/</link><guid isPermaLink="false">https://skovhus.github.io/converting-an-app-to-react-native/</guid><pubDate>Fri, 13 Apr 2018 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;This is the second part of a series on migrating existing native apps to React Native. Check out &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-why-and-how-b56c02c07b96&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the first blog post&lt;/a&gt; if you want to know why we went for React Native and how we approached it.&lt;/p&gt;
 &lt;h2&gt;React Native under the hood, a crash course&lt;/h2&gt;
 &lt;p&gt;To understand how React Native works on mobile, you first need to look at the virtual DOM (Document Object Model) that is used in both React and React Native. If you’ve ever done web development, you know how the DOM works in the browser. If not, you might be interested in &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;reading up on it&lt;/a&gt;. In short: The DOM represents a page as nodes and objects. In plain React, &lt;a href=&quot;https://reactjs.org/docs/faq-internals.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the virtual DOM&lt;/a&gt; is an in-memory representation of the UI on top of the actual DOM. When a node or object changes, React will diff the virtual DOM and the actual DOM, and only update those nodes or objects that have changed. In React Native, there is no browser DOM. Instead, the virtual DOM is rendered into native iOS or Android views.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;a
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png&quot;
     style=&quot;display: block&quot;
@@ -10,18 +14,13 @@
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 48.309178743961354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABoklEQVQoz41R227aQBDl6/MPlfKQt/SlamnSVI2b0EItEgxVGnACDg3g2Hix17e92MaXna4NDVKfKh3tnpk9Z2dnthUwqMEhSiBMIOI1Ql4n64zk7JCUmb2+QWu3YVK9IGq5zMLF0i3WQeXFhYkICjInrFZubvul42cvG4qJ+NfsRqXjMQdzJyw3UeXGYhPlK4cgP5P3NqFAwVYWkOHB7DPwqRAAvXH8Q48kwVSQDGgm3rTNpV/QUr4LthXM1+nxhcWzugV/ZyYpeKS8HGLT3ap6/P2Xn+ZismAfb/CSgTn4th4oJcDXkadOYhtD76n77DlxIv2iJZvsjaO3HaSv+JOdHH8ybZy/u2XdzoivdO3mvn+tPq7hfTdQJprHwvb96cSe0bQxm15x8sUazsh5H/XGgWYwfUHaykNojGZX7fO7XJvnyk+rM7bv7Nv+74E67y48tK/Mc7gc+lOTGlbyWcMFQBDy59MjnmZXenymIgB4RIYy/ZBL5cPZ1DFk23JM+4HJtndfKgmm0IwQAnlMK0n+QqqFXGswcfiqWtoEr+Q/8Qek4CVmf+MzFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-    &gt;&lt;/span&gt;
-    &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.309178743961354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABoklEQVQoz41R227aQBDl6/MPlfKQt/SlamnSVI2b0EItEgxVGnACDg3g2Hix17e92MaXna4NDVKfKh3tnpk9Z2dnthUwqMEhSiBMIOI1Ql4n64zk7JCUmb2+QWu3YVK9IGq5zMLF0i3WQeXFhYkICjInrFZubvul42cvG4qJ+NfsRqXjMQdzJyw3UeXGYhPlK4cgP5P3NqFAwVYWkOHB7DPwqRAAvXH8Q48kwVSQDGgm3rTNpV/QUr4LthXM1+nxhcWzugV/ZyYpeKS8HGLT3ap6/P2Xn+ZismAfb/CSgTn4th4oJcDXkadOYhtD76n77DlxIv2iJZvsjaO3HaSv+JOdHH8ybZy/u2XdzoivdO3mvn+tPq7hfTdQJprHwvb96cSe0bQxm15x8sUazsh5H/XGgWYwfUHaykNojGZX7fO7XJvnyk+rM7bv7Nv+74E67y48tK/Mc7gc+lOTGlbyWcMFQBDy59MjnmZXenymIgB4RIYy/ZBL5cPZ1DFk23JM+4HJtndfKgmm0IwQAnlMK0n+QqqFXGswcfiqWtoEr+Q/8Qek4CVmf+MzFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Virtual DOM in React and React Native&quot;
-        title=&quot;&quot;
+        title=&quot;Virtual DOM in React and React Native&quot;
         src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/b9e4f/react-native-vdom.png&quot;
         srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/cf440/react-native-vdom.png 148w,
 /static/e964a98fe5f036fb3805b0a58b517587/d2d38/react-native-vdom.png 295w,
@@ -29,9 +28,10 @@
 /static/e964a98fe5f036fb3805b0a58b517587/f9b6a/react-native-vdom.png 885w,
 /static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png 1035w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-  &lt;/span&gt;
   &lt;/a&gt;
+    &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Virtual DOM in React and React Native&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;While you write plain JavaScript and JSX (tag syntax that is an extension to JavaScript) to define how your React Native app should look and behave, the UI is still rendered natively. Whenever there is a change in one of the nodes or objects, React Native will update the relevant parts of the UI automatically.&lt;/p&gt;
@@ -85,7 +85,11 @@
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Co-authored by &lt;a href=&quot;http://www.kevinpelgrims.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Kevin Pelgrims&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-how-to-get-started-924548ff6c62&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Leo Innovation Labs’ medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Type safe CSS Modules with Flow]]></title><description><![CDATA[I’ve been dreaming about type safety and editor autocompletion when using CSS Modules. There are a few TypeScript tools for this (see this…]]></description><link>https://skovhus.github.io/type-safe-css-modules-with-flow/</link><guid isPermaLink="false">https://skovhus.github.io/type-safe-css-modules-with-flow/</guid><pubDate>Wed, 21 Jun 2017 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;a
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png&quot;
     style=&quot;display: block&quot;
@@ -93,18 +97,13 @@
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 53.87500000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAABGUlEQVQoz6WSz2qEMBDGfea+R19A8AFEQejBkwUvLkUQESsWVw/ZFcq2cdX1D1LNpKPWZWULFvqRw+RLfsxkJgL/h4Su68qyvKyFTl3X2zDeQ54xNtwIt0VRYLABY56+7+8P0N+Gq6pq2/aaEC0AuINhWWs4yzLHcUzT1HXdMAwEZhjLXlW0gDDpB87zPI7jKIpc1/U87wo0TTMVMt072fwg8+GMFABbNSwMQ8R83w+CIEkSQkiappZloXMpizFbE0PywPPnICL7/Ruln9k5w8cKlFJZliVJUhRFVdWnRaIoapp2PB5G+OsDwkd+2pF3atsv/qtv7SwseZzz3DPcYDAPGWOc8+3zOBs4jP0b2NjX2Rf+9pfgV/cb6hpym38PEJIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;&lt;/span&gt;
-    &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.87500000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAABGUlEQVQoz6WSz2qEMBDGfea+R19A8AFEQejBkwUvLkUQESsWVw/ZFcq2cdX1D1LNpKPWZWULFvqRw+RLfsxkJgL/h4Su68qyvKyFTl3X2zDeQ54xNtwIt0VRYLABY56+7+8P0N+Gq6pq2/aaEC0AuINhWWs4yzLHcUzT1HXdMAwEZhjLXlW0gDDpB87zPI7jKIpc1/U87wo0TTMVMt072fwg8+GMFABbNSwMQ8R83w+CIEkSQkiappZloXMpizFbE0PywPPnICL7/Ruln9k5w8cKlFJZliVJUhRFVdWnRaIoapp2PB5G+OsDwkd+2pF3atsv/qtv7SwseZzz3DPcYDAPGWOc8+3zOBs4jP0b2NjX2Rf+9pfgV/cb6hpym38PEJIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
         alt=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
-        title=&quot;&quot;
+        title=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
         src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/b9e4f/css-modules-flow.png&quot;
         srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/cf440/css-modules-flow.png 148w,
 /static/82781fd79c387e48bc41c57f9f86025a/d2d38/css-modules-flow.png 295w,
@@ -113,9 +112,10 @@
 /static/82781fd79c387e48bc41c57f9f86025a/2d849/css-modules-flow.png 1180w,
 /static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-  &lt;/span&gt;
   &lt;/a&gt;
+    &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;CSS Modules + Flow = type safety and editor autocompletion&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;I’ve been dreaming about type safety and editor autocompletion when using &lt;a href=&quot;https://github.com/css-modules/css-modules&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CSS Modules&lt;/a&gt;. There are a few TypeScript tools for this (see &lt;a href=&quot;https://medium.com/@sapegin/css-modules-with-typescript-and-webpack-6b221ebe5f10&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://github.com/Quramy/typed-css-modules&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;this&lt;/a&gt;), but I didn’t find any solid tools for &lt;a href=&quot;https://flow.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Flow&lt;/a&gt;.&lt;/p&gt;
@@ -162,7 +162,11 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Please let me know what you think… And give a little ⭐️ over at &lt;a href=&quot;https://github.com/skovhus/css-modules-flow-types&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://hackernoon.com/type-safe-css-modules-with-flow-dd95e761bbe5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React PropTypes to Flow codemod]]></title><description><![CDATA[I’m presenting how to automatically convert your existing codebase using React PropTypes to use more powerful Flow annotations. If you…]]></description><link>https://skovhus.github.io/react-prop-types-to-flow-codemod/</link><guid isPermaLink="false">https://skovhus.github.io/react-prop-types-to-flow-codemod/</guid><pubDate>Tue, 11 Apr 2017 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;I’m presenting how to automatically convert your existing codebase using React PropTypes to use more powerful Flow annotations. If you already seen why this is valuable, you can skip down to the next section.&lt;/em&gt; 👇🏻&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;a
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg&quot;
     style=&quot;display: block&quot;
@@ -170,18 +174,13 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAFU9qhZcCOoWGkZof/EABsQAAMAAwEBAAAAAAAAAAAAAAABEQIDEiIz/9oACAEBAAEFAs8Br09ZsZl9oVcxXoRSs//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABsQAAEEAwAAAAAAAAAAAAAAAAABAhBxESAh/9oACAEBAAY/Arliodhtmdf/xAAcEAADAQEAAwEAAAAAAAAAAAAAAREhMUFhkVH/2gAIAQEAAT8hQnlqKEZalEXW/hTiPLxnweql30Nm/BbfRKl0dxFfp7D/2gAMAwEAAgADAAAAEBDDPP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABwQAQACAgMBAAAAAAAAAAAAAAEAESExQVFhsf/aAAgBAQABPxBbUsA57I46o08TUBrQn5LdumD0hvgtIdWFlmLQF6PKigMkMjkEpV4h3o92f//Z&apos;); background-size: cover; display: block;&quot;
-    &gt;&lt;/span&gt;
-    &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAFU9qhZcCOoWGkZof/EABsQAAMAAwEBAAAAAAAAAAAAAAABEQIDEiIz/9oACAEBAAEFAs8Br09ZsZl9oVcxXoRSs//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABsQAAEEAwAAAAAAAAAAAAAAAAABAhBxESAh/9oACAEBAAY/Arliodhtmdf/xAAcEAADAQEAAwEAAAAAAAAAAAAAAREhMUFhkVH/2gAIAQEAAT8hQnlqKEZalEXW/hTiPLxnweql30Nm/BbfRKl0dxFfp7D/2gAMAwEAAgADAAAAEBDDPP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABwQAQACAgMBAAAAAAAAAAAAAAEAESExQVFhsf/aAAgBAQABPxBbUsA57I46o08TUBrQn5LdumD0hvgtIdWFlmLQF6PKigMkMjkEpV4h3o92f//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
-        title=&quot;&quot;
+        title=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
         src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c739e/flow-unsplash.jpg&quot;
         srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/8ee9c/flow-unsplash.jpg 148w,
 /static/4822d2d94a48a54d885e84246876a4ac/ebbe7/flow-unsplash.jpg 295w,
@@ -190,9 +189,10 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 /static/4822d2d94a48a54d885e84246876a4ac/4efde/flow-unsplash.jpg 1180w,
 /static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg 1200w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-  &lt;/span&gt;
   &lt;/a&gt;
+    &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Eye candy, because you deserve it (unsplash.com/@thekorus)&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;If React were Facebook’s gateway drug to declarative and composable UI, React PropTypes introduced a lot of people to type checking.&lt;/p&gt;
@@ -242,9 +242,13 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Thanks to &lt;a href=&quot;https://twitter.com/penzington&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Maciek Pekala&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/Mads_Hartmann&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Mads Hartmann&lt;/a&gt; for reviewing this post.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/netscape/react-proptypes-to-flow-codemod-9757f5ec5381&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;medium/netscape&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Abandoning the mothership]]></title><description><![CDATA[The time had come to pour into our front-end code the same poison we had given our back-end systems.For many years, issuu’s engineering…]]></description><link>https://skovhus.github.io/abandoning-the-mothership/</link><guid isPermaLink="false">https://skovhus.github.io/abandoning-the-mothership/</guid><pubDate>Tue, 27 Sep 2016 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;The time had come to pour into our front-end code the same poison we had given our back-end systems.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/netscape/react-proptypes-to-flow-codemod-9757f5ec5381&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;medium/netscape&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Abandoning the mothership]]></title><description><![CDATA[The time had come to pour into our front-end code the same poison we had given our back-end systems.  For many years, issuu’s engineering…]]></description><link>https://skovhus.github.io/abandoning-the-mothership/</link><guid isPermaLink="false">https://skovhus.github.io/abandoning-the-mothership/</guid><pubDate>Tue, 27 Sep 2016 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;The time had come to pour into our front-end code the same poison we had given our back-end systems.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;a
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg&quot;
     style=&quot;display: block&quot;
@@ -252,18 +256,13 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 62.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQGA//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAZ9tQKAxD//EABoQAAICAwAAAAAAAAAAAAAAAAEEAgMAEBL/2gAIAQEAAQUCxYgWzQ720zbCz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EAB0QAAICAQUAAAAAAAAAAAAAAAECABEiEBIhUfH/2gAIAQEABj8CmXsDLhY5XrUBWobRP//EABoQAQEAAgMAAAAAAAAAAAAAAAERADEQQbH/2gAIAQEAAT8hwOxIwdLocVQQOyuYJDwz/9oADAMBAAIAAwAAABDQz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQEBAAIDAAAAAAAAAAAAAAERADFBIVGR/9oACAEBAAE/EArDUuRjFhyBgveQuoHh2g+sa6h4UDlaV+7/2Q==&apos;); background-size: cover; display: block;&quot;
-    &gt;&lt;/span&gt;
-    &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQGA//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAZ9tQKAxD//EABoQAAICAwAAAAAAAAAAAAAAAAEEAgMAEBL/2gAIAQEAAQUCxYgWzQ720zbCz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EAB0QAAICAQUAAAAAAAAAAAAAAAECABEiEBIhUfH/2gAIAQEABj8CmXsDLhY5XrUBWobRP//EABoQAQEAAgMAAAAAAAAAAAAAAAERADEQQbH/2gAIAQEAAT8hwOxIwdLocVQQOyuYJDwz/9oADAMBAAIAAwAAABCQz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQEBAAIDAAAAAAAAAAAAAAERADFBIVGR/9oACAEBAAE/EArDUuRjFhyBgveQuoHh2g+sa6h4UDlaV+7/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Abandoning the mothership&quot;
-        title=&quot;&quot;
+        title=&quot;Abandoning the mothership&quot;
         src=&quot;/static/39811723aaa825729504ddb878b338eb/c739e/deathstar.jpg&quot;
         srcset=&quot;/static/39811723aaa825729504ddb878b338eb/8ee9c/deathstar.jpg 148w,
 /static/39811723aaa825729504ddb878b338eb/ebbe7/deathstar.jpg 295w,
@@ -272,9 +271,10 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 /static/39811723aaa825729504ddb878b338eb/4efde/deathstar.jpg 1180w,
 /static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-  &lt;/span&gt;
   &lt;/a&gt;
+    &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Abandoning the mothership&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;For many years, issuu’s engineering group was organized around component teams. Our late great Team Monster handled the front-end code and the rest of the teams provided APIs and back-end infrastructure.&lt;/p&gt;
@@ -297,7 +297,11 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 &lt;li&gt;and UI components.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;a
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png&quot;
     style=&quot;display: block&quot;
@@ -305,18 +309,13 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 27.832512315270936%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsSAAALEgHS3X78AAABkUlEQVQY0z3Ly07CQBQG4D6UJm5AjZHSThlQgZbSlkTEhSZGfRhNXGjibYYgorGVmOjKQYPEmNgG0Vew0/EGuHRoGhd/5sw53y/EZYXFJUD5SyeBwqaB8hUHCo1JcpDM5gNYNCjUCt9QNxhQC3RagUFMBnQKKB8jG+M93g/iMvB570fAObmLtZSHs9LL4bzY2c0krvBCsofVlFfT015dS/X2c/JlTQVPdT3drRagh3NS72BOvNvLJK6r2eRr2M8DFy2IbwJdytyzzVKLltNt30g0AzOx45vJDlszSLCqkXdTeqCWtP1uiDd+Ze6ebZSIX4Ydaoqn3O75lvTI1i0SrKjEt+SOMECw1T9SyAClybBhtoYNqzWo5clo1z9O3fYRbP8iuMXdNf/fhRZnyMgNz0rc5v4tN23BRrrnIN0NU1t0nZOK62DLtcNd8bmJjG69ajoOMh6b2IhskdtyZE036j/bx/qrMF7XPnlYmBOVJ89nlY3xxM5LbOZiiUn28s+sXfmYsStsolEMb6GLbNQPeAZ/XOAR5sZCZo0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;&lt;/span&gt;
-    &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 27.832512315270936%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsSAAALEgHS3X78AAABkUlEQVQY0z3Ly07CQBQG4D6UJm5AjZHSThlQgZbSlkTEhSZGfRhNXGjibYYgorGVmOjKQYPEmNgG0Vew0/EGuHRoGhd/5sw53y/EZYXFJUD5SyeBwqaB8hUHCo1JcpDM5gNYNCjUCt9QNxhQC3RagUFMBnQKKB8jG+M93g/iMvB570fAObmLtZSHs9LL4bzY2c0krvBCsofVlFfT015dS/X2c/JlTQVPdT3drRagh3NS72BOvNvLJK6r2eRr2M8DFy2IbwJdytyzzVKLltNt30g0AzOx45vJDlszSLCqkXdTeqCWtP1uiDd+Ze6ebZSIX4Ydaoqn3O75lvTI1i0SrKjEt+SOMECw1T9SyAClybBhtoYNqzWo5clo1z9O3fYRbP8iuMXdNf/fhRZnyMgNz0rc5v4tN23BRrrnIN0NU1t0nZOK62DLtcNd8bmJjG69ajoOMh6b2IhskdtyZE036j/bx/qrMF7XPnlYmBOVJ89nlY3xxM5LbOZiiUn28s+sXfmYsStsolEMb6GLbNQPeAZ/XOAR5sZCZo0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Partitioning our frontend-end code base&quot;
-        title=&quot;&quot;
+        title=&quot;Partitioning our frontend-end code base&quot;
         src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/b9e4f/infrastructure.png&quot;
         srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/cf440/infrastructure.png 148w,
 /static/94804a1eeb24eeb80466e8118e2d738a/d2d38/infrastructure.png 295w,
@@ -325,9 +324,10 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 /static/94804a1eeb24eeb80466e8118e2d738a/2d849/infrastructure.png 1180w,
 /static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png 1218w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-  &lt;/span&gt;
   &lt;/a&gt;
+    &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Partitioning our frontend-end code base&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;strong&gt;shared serving infrastructure&lt;/strong&gt; is a thin horizontal node.js application responsible for routing and serving &lt;strong&gt;pages&lt;/strong&gt;. It holds the configuration for which version of a page to be served.&lt;/p&gt;
