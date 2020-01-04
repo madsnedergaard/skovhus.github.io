@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 29 Aug 2019 08:58:08 GMT</lastBuildDate><item><title><![CDATA[Converting an app to React Native — How to get started]]></title><description><![CDATA[This is the second part of a series on migrating existing native apps to React Native. Check out the first blog post if you want to know why…]]></description><link>https://skovhus.github.io/converting-an-app-to-react-native/</link><guid isPermaLink="false">https://skovhus.github.io/converting-an-app-to-react-native/</guid><pubDate>Fri, 13 Apr 2018 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;This is the second part of a series on migrating existing native apps to React Native. Check out &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-why-and-how-b56c02c07b96&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the first blog post&lt;/a&gt; if you want to know why we went for React Native and how we approached it.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 04 Jan 2020 19:54:02 GMT</lastBuildDate><item><title><![CDATA[Converting an app to React Native — How to get started]]></title><description><![CDATA[This is the second part of a series on migrating existing native apps to React Native. Check out the first blog post if you want to know why…]]></description><link>https://skovhus.github.io/converting-an-app-to-react-native/</link><guid isPermaLink="false">https://skovhus.github.io/converting-an-app-to-react-native/</guid><pubDate>Fri, 13 Apr 2018 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;This is the second part of a series on migrating existing native apps to React Native. Check out &lt;a href=&quot;https://medium.com/leoilab/converting-an-app-to-react-native-why-and-how-b56c02c07b96&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the first blog post&lt;/a&gt; if you want to know why we went for React Native and how we approached it.&lt;/p&gt;
 &lt;h2&gt;React Native under the hood, a crash course&lt;/h2&gt;
 &lt;p&gt;To understand how React Native works on mobile, you first need to look at the virtual DOM (Document Object Model) that is used in both React and React Native. If you’ve ever done web development, you know how the DOM works in the browser. If not, you might be interested in &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;reading up on it&lt;/a&gt;. In short: The DOM represents a page as nodes and objects. In plain React, &lt;a href=&quot;https://reactjs.org/docs/faq-internals.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the virtual DOM&lt;/a&gt; is an in-memory representation of the UI on top of the actual DOM. When a node or object changes, React will diff the virtual DOM and the actual DOM, and only update those nodes or objects that have changed. In React Native, there is no browser DOM. Instead, the virtual DOM is rendered into native iOS or Android views.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
@@ -8,7 +8,7 @@
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png&quot;
+    href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/bcbcb/react-native-vdom.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -21,13 +21,14 @@
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Virtual DOM in React and React Native&quot;
         title=&quot;Virtual DOM in React and React Native&quot;
-        src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/b9e4f/react-native-vdom.png&quot;
-        srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/cf440/react-native-vdom.png 148w,
-/static/e964a98fe5f036fb3805b0a58b517587/d2d38/react-native-vdom.png 295w,
-/static/e964a98fe5f036fb3805b0a58b517587/b9e4f/react-native-vdom.png 590w,
-/static/e964a98fe5f036fb3805b0a58b517587/f9b6a/react-native-vdom.png 885w,
-/static/e964a98fe5f036fb3805b0a58b517587/17fa4/react-native-vdom.png 1035w&quot;
+        src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/799d3/react-native-vdom.png&quot;
+        srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/00d96/react-native-vdom.png 148w,
+/static/e964a98fe5f036fb3805b0a58b517587/0b23c/react-native-vdom.png 295w,
+/static/e964a98fe5f036fb3805b0a58b517587/799d3/react-native-vdom.png 590w,
+/static/e964a98fe5f036fb3805b0a58b517587/2a3d6/react-native-vdom.png 885w,
+/static/e964a98fe5f036fb3805b0a58b517587/bcbcb/react-native-vdom.png 1035w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -91,7 +92,7 @@
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png&quot;
+    href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/75d76/css-modules-flow.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -104,14 +105,15 @@
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
         title=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
-        src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/b9e4f/css-modules-flow.png&quot;
-        srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/cf440/css-modules-flow.png 148w,
-/static/82781fd79c387e48bc41c57f9f86025a/d2d38/css-modules-flow.png 295w,
-/static/82781fd79c387e48bc41c57f9f86025a/b9e4f/css-modules-flow.png 590w,
-/static/82781fd79c387e48bc41c57f9f86025a/f9b6a/css-modules-flow.png 885w,
-/static/82781fd79c387e48bc41c57f9f86025a/2d849/css-modules-flow.png 1180w,
-/static/82781fd79c387e48bc41c57f9f86025a/2f950/css-modules-flow.png 1600w&quot;
+        src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/799d3/css-modules-flow.png&quot;
+        srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/00d96/css-modules-flow.png 148w,
+/static/82781fd79c387e48bc41c57f9f86025a/0b23c/css-modules-flow.png 295w,
+/static/82781fd79c387e48bc41c57f9f86025a/799d3/css-modules-flow.png 590w,
+/static/82781fd79c387e48bc41c57f9f86025a/2a3d6/css-modules-flow.png 885w,
+/static/82781fd79c387e48bc41c57f9f86025a/ae92f/css-modules-flow.png 1180w,
+/static/82781fd79c387e48bc41c57f9f86025a/75d76/css-modules-flow.png 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -168,7 +170,7 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg&quot;
+    href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/6e525/flow-unsplash.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -181,14 +183,15 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
         title=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
-        src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/c739e/flow-unsplash.jpg&quot;
-        srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/8ee9c/flow-unsplash.jpg 148w,
-/static/4822d2d94a48a54d885e84246876a4ac/ebbe7/flow-unsplash.jpg 295w,
-/static/4822d2d94a48a54d885e84246876a4ac/c739e/flow-unsplash.jpg 590w,
-/static/4822d2d94a48a54d885e84246876a4ac/5413e/flow-unsplash.jpg 885w,
-/static/4822d2d94a48a54d885e84246876a4ac/4efde/flow-unsplash.jpg 1180w,
-/static/4822d2d94a48a54d885e84246876a4ac/c35de/flow-unsplash.jpg 1200w&quot;
+        src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/88218/flow-unsplash.jpg&quot;
+        srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/7237a/flow-unsplash.jpg 148w,
+/static/4822d2d94a48a54d885e84246876a4ac/0cfdf/flow-unsplash.jpg 295w,
+/static/4822d2d94a48a54d885e84246876a4ac/88218/flow-unsplash.jpg 590w,
+/static/4822d2d94a48a54d885e84246876a4ac/77d57/flow-unsplash.jpg 885w,
+/static/4822d2d94a48a54d885e84246876a4ac/5a917/flow-unsplash.jpg 1180w,
+/static/4822d2d94a48a54d885e84246876a4ac/6e525/flow-unsplash.jpg 1200w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -242,7 +245,7 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Thanks to &lt;a href=&quot;https://twitter.com/penzington&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Maciek Pekala&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/Mads_Hartmann&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Mads Hartmann&lt;/a&gt; for reviewing this post.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/netscape/react-proptypes-to-flow-codemod-9757f5ec5381&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;medium/netscape&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Abandoning the mothership]]></title><description><![CDATA[The time had come to pour into our front-end code the same poison we had given our back-end systems.  For many years, issuu’s engineering…]]></description><link>https://skovhus.github.io/abandoning-the-mothership/</link><guid isPermaLink="false">https://skovhus.github.io/abandoning-the-mothership/</guid><pubDate>Tue, 27 Sep 2016 15:05:00 GMT</pubDate><content:encoded>&lt;p&gt;The time had come to pour into our front-end code the same poison we had given our back-end systems.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This blog post were originally posted on &lt;a href=&quot;https://medium.com/netscape/react-proptypes-to-flow-codemod-9757f5ec5381&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;medium/netscape&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Abandoning the mothership]]></title><description><![CDATA[The time had come to pour into our front-end code the same poison we had given our back-end systems.  COMMENT FROM DECEMBER 2019: This blog…]]></description><link>https://skovhus.github.io/abandoning-the-mothership/</link><guid isPermaLink="false">https://skovhus.github.io/abandoning-the-mothership/</guid><pubDate>Wed, 16 Dec 2015 12:00:00 GMT</pubDate><content:encoded>&lt;p&gt;The time had come to pour into our front-end code the same poison we had given our back-end systems.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -250,7 +253,7 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg&quot;
+    href=&quot;/static/39811723aaa825729504ddb878b338eb/e735c/deathstar.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -263,20 +266,24 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Abandoning the mothership&quot;
         title=&quot;Abandoning the mothership&quot;
-        src=&quot;/static/39811723aaa825729504ddb878b338eb/c739e/deathstar.jpg&quot;
-        srcset=&quot;/static/39811723aaa825729504ddb878b338eb/8ee9c/deathstar.jpg 148w,
-/static/39811723aaa825729504ddb878b338eb/ebbe7/deathstar.jpg 295w,
-/static/39811723aaa825729504ddb878b338eb/c739e/deathstar.jpg 590w,
-/static/39811723aaa825729504ddb878b338eb/5413e/deathstar.jpg 885w,
-/static/39811723aaa825729504ddb878b338eb/4efde/deathstar.jpg 1180w,
-/static/39811723aaa825729504ddb878b338eb/8179c/deathstar.jpg 1600w&quot;
+        src=&quot;/static/39811723aaa825729504ddb878b338eb/88218/deathstar.jpg&quot;
+        srcset=&quot;/static/39811723aaa825729504ddb878b338eb/7237a/deathstar.jpg 148w,
+/static/39811723aaa825729504ddb878b338eb/0cfdf/deathstar.jpg 295w,
+/static/39811723aaa825729504ddb878b338eb/88218/deathstar.jpg 590w,
+/static/39811723aaa825729504ddb878b338eb/77d57/deathstar.jpg 885w,
+/static/39811723aaa825729504ddb878b338eb/5a917/deathstar.jpg 1180w,
+/static/39811723aaa825729504ddb878b338eb/e735c/deathstar.jpg 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Abandoning the mothership&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;COMMENT FROM DECEMBER 2019: This blog post was released when Star Wars: Episode VII – The Force Awakens came out… 🎬😄&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;For many years, issuu’s engineering group was organized around component teams. Our late great Team Monster handled the front-end code and the rest of the teams provided APIs and back-end infrastructure.&lt;/p&gt;
 &lt;p&gt;As we scaled the engineering organization, this classical split became counterproductive. A lot of cross team coordination was required for releases. Business logic and remappings were spread across multiple layers of the application. Dependencies and ownership of features were unclear. Finally, the Monsters had way too much on their plate!&lt;/p&gt;
 &lt;p&gt;So in 2013, several of our teams transitioned from component teams to customer-centric, cross-component feature teams. One focused on the end-to-end reading experience, another team handled all publisher-related features and so on. Next was taking ownership of the entire code stack, from database to front end. Our back-end system quickly transitioned into smaller microservices written in technologies the team deemed best (OCaml, Erlang, Python, node.js, MySQL, Postgres, Redis, AMQP).&lt;/p&gt;
@@ -303,7 +310,7 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png&quot;
+    href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/d9e23/infrastructure.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -316,14 +323,15 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Partitioning our frontend-end code base&quot;
         title=&quot;Partitioning our frontend-end code base&quot;
-        src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/b9e4f/infrastructure.png&quot;
-        srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/cf440/infrastructure.png 148w,
-/static/94804a1eeb24eeb80466e8118e2d738a/d2d38/infrastructure.png 295w,
-/static/94804a1eeb24eeb80466e8118e2d738a/b9e4f/infrastructure.png 590w,
-/static/94804a1eeb24eeb80466e8118e2d738a/f9b6a/infrastructure.png 885w,
-/static/94804a1eeb24eeb80466e8118e2d738a/2d849/infrastructure.png 1180w,
-/static/94804a1eeb24eeb80466e8118e2d738a/80eb7/infrastructure.png 1218w&quot;
+        src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/799d3/infrastructure.png&quot;
+        srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/00d96/infrastructure.png 148w,
+/static/94804a1eeb24eeb80466e8118e2d738a/0b23c/infrastructure.png 295w,
+/static/94804a1eeb24eeb80466e8118e2d738a/799d3/infrastructure.png 590w,
+/static/94804a1eeb24eeb80466e8118e2d738a/2a3d6/infrastructure.png 885w,
+/static/94804a1eeb24eeb80466e8118e2d738a/ae92f/infrastructure.png 1180w,
+/static/94804a1eeb24eeb80466e8118e2d738a/d9e23/infrastructure.png 1218w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
