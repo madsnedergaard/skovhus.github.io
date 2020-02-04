@@ -17,6 +17,8 @@ baseTheme.overrideThemeStyles = () => {
     },
     blockquote: {
       fontSize: '1em',
+      color: 'inherit',
+      borderLeftColor: 'inherit',
     },
     a: {
       color: 'var(--color-accent)',
@@ -29,6 +31,9 @@ baseTheme.overrideThemeStyles = () => {
     },
     h2: {
       fontSize: '1.6rem',
+    },
+    hr: {
+      background: 'var(--background-hr)',
     },
   }
 }
