@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 23 Feb 2020 20:42:28 GMT</lastBuildDate><item><title><![CDATA[Migrating from Flow to TypeScript using flow-to-ts]]></title><description><![CDATA[Over the last couple of years, I have been migrating several codebases from Flow to TypeScript with minimal effort. In this post, I will…]]></description><link>https://skovhus.github.io/flow-to-typescript-migration/</link><guid isPermaLink="false">https://skovhus.github.io/flow-to-typescript-migration/</guid><pubDate>Sun, 09 Feb 2020 12:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Over the last couple of years, I have been migrating several codebases from &lt;a href=&quot;https://flow.org/en/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Flow&lt;/a&gt; to &lt;a href=&quot;https://www.typescriptlang.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TypeScript&lt;/a&gt; with minimal effort. In this post, I will describe my motivation and the approach I would recommend.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 27 Feb 2020 11:54:56 GMT</lastBuildDate><item><title><![CDATA[Migrating from Flow to TypeScript using flow-to-ts]]></title><description><![CDATA[Over the last couple of years, I have been migrating several codebases from Flow to TypeScript with minimal effort. In this post, I will…]]></description><link>https://skovhus.github.io/flow-to-typescript-migration/</link><guid isPermaLink="false">https://skovhus.github.io/flow-to-typescript-migration/</guid><pubDate>Sun, 09 Feb 2020 12:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Over the last couple of years, I have been migrating several codebases from &lt;a href=&quot;https://flow.org/en/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Flow&lt;/a&gt; to &lt;a href=&quot;https://www.typescriptlang.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TypeScript&lt;/a&gt; with minimal effort. In this post, I will describe my motivation and the approach I would recommend.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;TL;DR I recommend migrating using the &lt;a href=&quot;https://github.com/Khan/flow-to-ts&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;flow-to-ts&lt;/a&gt; codemod by Khan Academy.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;I started using Flow shortly after it was open sourced by Facebook in &lt;a href=&quot;https://engineering.fb.com/web/flow-a-new-static-type-checker-for-javascript/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;2014&lt;/a&gt;. It supports many of the same features as TypeScript (open sourced by Microsoft 2012) but focuses on being a static type checker where TypeScript is also a compiler. I originally picked it over TypeScript due to the momentum in the React community and the easy gradual migration path for existing code.&lt;/p&gt;
@@ -160,7 +160,7 @@ npx @khanacademy/flow-to-ts --write --delete-source src&lt;/code&gt;&lt;/pre&gt;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/bcbcb/react-native-vdom.png&quot;
+    href=&quot;/static/e964a98fe5f036fb3805b0a58b517587/e3189/react-native-vdom.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -173,12 +173,12 @@ npx @khanacademy/flow-to-ts --write --delete-source src&lt;/code&gt;&lt;/pre&gt;
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Virtual DOM in React and React Native&quot;
         title=&quot;Virtual DOM in React and React Native&quot;
-        src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/799d3/react-native-vdom.png&quot;
-        srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/00d96/react-native-vdom.png 148w,
-/static/e964a98fe5f036fb3805b0a58b517587/0b23c/react-native-vdom.png 295w,
-/static/e964a98fe5f036fb3805b0a58b517587/799d3/react-native-vdom.png 590w,
-/static/e964a98fe5f036fb3805b0a58b517587/2a3d6/react-native-vdom.png 885w,
-/static/e964a98fe5f036fb3805b0a58b517587/bcbcb/react-native-vdom.png 1035w&quot;
+        src=&quot;/static/e964a98fe5f036fb3805b0a58b517587/fcda8/react-native-vdom.png&quot;
+        srcset=&quot;/static/e964a98fe5f036fb3805b0a58b517587/12f09/react-native-vdom.png 148w,
+/static/e964a98fe5f036fb3805b0a58b517587/e4a3f/react-native-vdom.png 295w,
+/static/e964a98fe5f036fb3805b0a58b517587/fcda8/react-native-vdom.png 590w,
+/static/e964a98fe5f036fb3805b0a58b517587/efc66/react-native-vdom.png 885w,
+/static/e964a98fe5f036fb3805b0a58b517587/e3189/react-native-vdom.png 1035w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -244,7 +244,7 @@ npx @khanacademy/flow-to-ts --write --delete-source src&lt;/code&gt;&lt;/pre&gt;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/75d76/css-modules-flow.png&quot;
+    href=&quot;/static/82781fd79c387e48bc41c57f9f86025a/29007/css-modules-flow.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -257,13 +257,13 @@ npx @khanacademy/flow-to-ts --write --delete-source src&lt;/code&gt;&lt;/pre&gt;
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
         title=&quot;CSS Modules + Flow = type safety and editor autocompletion&quot;
-        src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/799d3/css-modules-flow.png&quot;
-        srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/00d96/css-modules-flow.png 148w,
-/static/82781fd79c387e48bc41c57f9f86025a/0b23c/css-modules-flow.png 295w,
-/static/82781fd79c387e48bc41c57f9f86025a/799d3/css-modules-flow.png 590w,
-/static/82781fd79c387e48bc41c57f9f86025a/2a3d6/css-modules-flow.png 885w,
-/static/82781fd79c387e48bc41c57f9f86025a/ae92f/css-modules-flow.png 1180w,
-/static/82781fd79c387e48bc41c57f9f86025a/75d76/css-modules-flow.png 1600w&quot;
+        src=&quot;/static/82781fd79c387e48bc41c57f9f86025a/fcda8/css-modules-flow.png&quot;
+        srcset=&quot;/static/82781fd79c387e48bc41c57f9f86025a/12f09/css-modules-flow.png 148w,
+/static/82781fd79c387e48bc41c57f9f86025a/e4a3f/css-modules-flow.png 295w,
+/static/82781fd79c387e48bc41c57f9f86025a/fcda8/css-modules-flow.png 590w,
+/static/82781fd79c387e48bc41c57f9f86025a/efc66/css-modules-flow.png 885w,
+/static/82781fd79c387e48bc41c57f9f86025a/c83ae/css-modules-flow.png 1180w,
+/static/82781fd79c387e48bc41c57f9f86025a/29007/css-modules-flow.png 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -304,8 +304,8 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --save-dev css-modules-flow-types-loader&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then update your webpack config:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  test&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/\.css$/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// or the file format you are using&lt;/span&gt;
-  use&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/\.css$/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// or the file format you are using&lt;/span&gt;
+  use&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;token string&quot;&gt;&apos;style-loader&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;token string&quot;&gt;&apos;css-modules-flow-types-loader&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// right after style-loader&lt;/span&gt;
     &lt;span class=&quot;token comment&quot;&gt;// Other loaders like css-loader after this:&lt;/span&gt;
@@ -322,7 +322,7 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/6e525/flow-unsplash.jpg&quot;
+    href=&quot;/static/4822d2d94a48a54d885e84246876a4ac/e5166/flow-unsplash.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -335,13 +335,13 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
         title=&quot;Eye candy, because you deserve it (unsplash.com/@thekorus)&quot;
-        src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/88218/flow-unsplash.jpg&quot;
-        srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/7237a/flow-unsplash.jpg 148w,
-/static/4822d2d94a48a54d885e84246876a4ac/0cfdf/flow-unsplash.jpg 295w,
-/static/4822d2d94a48a54d885e84246876a4ac/88218/flow-unsplash.jpg 590w,
-/static/4822d2d94a48a54d885e84246876a4ac/77d57/flow-unsplash.jpg 885w,
-/static/4822d2d94a48a54d885e84246876a4ac/5a917/flow-unsplash.jpg 1180w,
-/static/4822d2d94a48a54d885e84246876a4ac/6e525/flow-unsplash.jpg 1200w&quot;
+        src=&quot;/static/4822d2d94a48a54d885e84246876a4ac/1c72d/flow-unsplash.jpg&quot;
+        srcset=&quot;/static/4822d2d94a48a54d885e84246876a4ac/a80bd/flow-unsplash.jpg 148w,
+/static/4822d2d94a48a54d885e84246876a4ac/1c91a/flow-unsplash.jpg 295w,
+/static/4822d2d94a48a54d885e84246876a4ac/1c72d/flow-unsplash.jpg 590w,
+/static/4822d2d94a48a54d885e84246876a4ac/a8a14/flow-unsplash.jpg 885w,
+/static/4822d2d94a48a54d885e84246876a4ac/fbd2c/flow-unsplash.jpg 1180w,
+/static/4822d2d94a48a54d885e84246876a4ac/e5166/flow-unsplash.jpg 1200w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -360,7 +360,7 @@ yarn install -D css-modules-flow-types-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
 Button&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;propTypes &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;oneOfType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;oneOfType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
     PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;string&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;number&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     PropTypes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;instanceOf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Message&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -369,10 +369,10 @@ Button&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;propTypes &l
 
 &lt;span class=&quot;token comment&quot;&gt;/* 2) Using Flow annotations */&lt;/span&gt;
 type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; string &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; number &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Message&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; string &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; number &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Message&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; message &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; message &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;So far so good. But transitioning an existing codebase to use Flow annotations instead of PropTypes can be tedious… However this is a perfect task for a codemod!&lt;/p&gt;
 &lt;h2&gt;Time to mod the code&lt;/h2&gt;
@@ -405,7 +405,7 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/39811723aaa825729504ddb878b338eb/e735c/deathstar.jpg&quot;
+    href=&quot;/static/39811723aaa825729504ddb878b338eb/b17f8/deathstar.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -418,13 +418,13 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Abandoning the mothership&quot;
         title=&quot;Abandoning the mothership&quot;
-        src=&quot;/static/39811723aaa825729504ddb878b338eb/88218/deathstar.jpg&quot;
-        srcset=&quot;/static/39811723aaa825729504ddb878b338eb/7237a/deathstar.jpg 148w,
-/static/39811723aaa825729504ddb878b338eb/0cfdf/deathstar.jpg 295w,
-/static/39811723aaa825729504ddb878b338eb/88218/deathstar.jpg 590w,
-/static/39811723aaa825729504ddb878b338eb/77d57/deathstar.jpg 885w,
-/static/39811723aaa825729504ddb878b338eb/5a917/deathstar.jpg 1180w,
-/static/39811723aaa825729504ddb878b338eb/e735c/deathstar.jpg 1600w&quot;
+        src=&quot;/static/39811723aaa825729504ddb878b338eb/1c72d/deathstar.jpg&quot;
+        srcset=&quot;/static/39811723aaa825729504ddb878b338eb/a80bd/deathstar.jpg 148w,
+/static/39811723aaa825729504ddb878b338eb/1c91a/deathstar.jpg 295w,
+/static/39811723aaa825729504ddb878b338eb/1c72d/deathstar.jpg 590w,
+/static/39811723aaa825729504ddb878b338eb/a8a14/deathstar.jpg 885w,
+/static/39811723aaa825729504ddb878b338eb/fbd2c/deathstar.jpg 1180w,
+/static/39811723aaa825729504ddb878b338eb/b17f8/deathstar.jpg 1600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -462,7 +462,7 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/d9e23/infrastructure.png&quot;
+    href=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/c929c/infrastructure.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -475,13 +475,13 @@ type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Partitioning our frontend-end code base&quot;
         title=&quot;Partitioning our frontend-end code base&quot;
-        src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/799d3/infrastructure.png&quot;
-        srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/00d96/infrastructure.png 148w,
-/static/94804a1eeb24eeb80466e8118e2d738a/0b23c/infrastructure.png 295w,
-/static/94804a1eeb24eeb80466e8118e2d738a/799d3/infrastructure.png 590w,
-/static/94804a1eeb24eeb80466e8118e2d738a/2a3d6/infrastructure.png 885w,
-/static/94804a1eeb24eeb80466e8118e2d738a/ae92f/infrastructure.png 1180w,
-/static/94804a1eeb24eeb80466e8118e2d738a/d9e23/infrastructure.png 1218w&quot;
+        src=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/fcda8/infrastructure.png&quot;
+        srcset=&quot;/static/94804a1eeb24eeb80466e8118e2d738a/12f09/infrastructure.png 148w,
+/static/94804a1eeb24eeb80466e8118e2d738a/e4a3f/infrastructure.png 295w,
+/static/94804a1eeb24eeb80466e8118e2d738a/fcda8/infrastructure.png 590w,
+/static/94804a1eeb24eeb80466e8118e2d738a/efc66/infrastructure.png 885w,
+/static/94804a1eeb24eeb80466e8118e2d738a/c83ae/infrastructure.png 1180w,
+/static/94804a1eeb24eeb80466e8118e2d738a/c929c/infrastructure.png 1218w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
