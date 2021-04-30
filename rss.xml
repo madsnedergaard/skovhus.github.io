@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 12 Aug 2020 09:50:24 GMT</lastBuildDate><item><title><![CDATA[CV]]></title><description><![CDATA[Curriculum vitae Building meaningful software together with talented people is my passion. I offer around 20 years of experience, 5 years as…]]></description><link>https://skovhus.github.io/cv/</link><guid isPermaLink="false">https://skovhus.github.io/cv/</guid><content:encoded>&lt;h1&gt;Curriculum vitae&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Kenneth Skovhus]]></title><description><![CDATA[Portfolio, blog, talks, discography, and a collection of random bits and pieces by full-stack engineer Kenneth Skovhus.]]></description><link>https://skovhus.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Apr 2021 12:36:58 GMT</lastBuildDate><item><title><![CDATA[CV]]></title><description><![CDATA[Curriculum vitae Building meaningful software together with talented people is my passion. I offer around 20 years of experience, 5 years as…]]></description><link>https://skovhus.github.io/cv/</link><guid isPermaLink="false">https://skovhus.github.io/cv/</guid><content:encoded>&lt;h1&gt;Curriculum vitae&lt;/h1&gt;
 &lt;p&gt;Building meaningful software together with talented people is my passion.&lt;/p&gt;
 &lt;p&gt;I offer around 20 years of experience, 5 years as a tech lead, M.Sc. in computer science and engineering, dedication, professionalism, and great empathy for co-workers and end users.&lt;/p&gt;
 &lt;p&gt;I love mentoring, sharing knowledge, and excel in working full-stack with web technologies. I am very fond of React, TypeScript, GraphQL, codemods, testing, and automation. Read more about my &lt;a href=&quot;/blog/software-engineering-principles/&quot;&gt;engineering principles&lt;/a&gt;.&lt;/p&gt;
@@ -45,7 +45,94 @@
 &lt;p&gt;&lt;strong&gt;Bachelor project:&lt;/strong&gt; &lt;a href=&quot;http://etd.dtu.dk/thesis/247198/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Camera Control and Data Handling on DTUsat-2&lt;/a&gt;. Under the supervision of Hans Henrik Løvengreen, we further developed the onboard software on the DTU student satellite, DTUsat-2. The primary focus was on the camera control and data handling. The satellite is still active and in orbit. Grade: A+.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Interests &amp;#x26; spare time&lt;/h2&gt;
-&lt;p&gt;My amazing daughter Sigrid, traveling, cooking, food, and music. Currently, I play bass, mix and produce with my friends in &lt;a href=&quot;https://goforgold.dk&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Go for Gold&lt;/a&gt; and &lt;a href=&quot;https://www.facebook.com/freddyphan&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Freddy and the Phantoms&lt;/a&gt;. As my fellow Vesterbro hipsters, I also try to keep my sourdough alive… 🍞&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Guidelines for better pull requests]]></title><description><![CDATA[During my work to align our development efforts at Leo Innovation Lab I stumbled upon 10 tips for better Pull Requests by Mark Seemann (201…]]></description><link>https://skovhus.github.io/blog/better-pull-requests/</link><guid isPermaLink="false">https://skovhus.github.io/blog/better-pull-requests/</guid><pubDate>Wed, 12 Aug 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;During my work to align our development efforts at &lt;a href=&quot;https://leoinnovationlab.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Leo Innovation Lab&lt;/a&gt; I stumbled upon &lt;a href=&quot;http://blog.ploeh.dk/2015/01/15/10-tips-for-better-pull-requests/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;10 tips for better Pull Requests by Mark Seemann (2015)&lt;/a&gt;. The blog post aligned well with our perception of a good pull request (PR) and was a great starting point for discussions.&lt;/p&gt;
+&lt;p&gt;My amazing daughter Sigrid, traveling, cooking, food, and music. Currently, I play bass, mix and produce with my friends in &lt;a href=&quot;https://goforgold.dk&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Go for Gold&lt;/a&gt; and &lt;a href=&quot;https://www.facebook.com/freddyphan&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Freddy and the Phantoms&lt;/a&gt;. As my fellow Vesterbro hipsters, I also try to keep my sourdough alive… 🍞&lt;/p&gt;</content:encoded></item><item><title><![CDATA[My mental model for fixing software bugs]]></title><description><![CDATA[If debugging is the process of removing software bugs, then programming must be the process of putting them in. – Edsger Dijkstra I really…]]></description><link>https://skovhus.github.io/blog/bug-fixing/</link><guid isPermaLink="false">https://skovhus.github.io/blog/bug-fixing/</guid><pubDate>Fri, 30 Apr 2021 10:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;If debugging is the process of removing software bugs, then programming must be the process of putting them in.&lt;/p&gt;
+&lt;p&gt;– Edsger Dijkstra&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I really enjoy fixing software bugs! The detective work, building up a hypothesis about the underlying root cause, digging through paper trails and turning stones to find the culprit. But what I enjoy the most is the &lt;strong&gt;opportunity to improve the system&lt;/strong&gt;. Unfortunately, this last step is sometimes skipped by quickly squashing a bug and then carrying on with other activities.&lt;/p&gt;
+&lt;p&gt;While a quick fix seems efficient you miss important learnings and a perfect opportunity to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clean up technical debt and making your system easier to maintain&lt;/li&gt;
+&lt;li&gt;helping co-workers and future you to not commit the same mistake again&lt;/li&gt;
+&lt;li&gt;understand the quality of your system’s safety nets&lt;/li&gt;
+&lt;li&gt;lay the groundwork for spending less time fire fighting and more time developing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I tried to generalize my mental model for fixing bugs. It boils down to a 4 step process:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;determine the severity: do we need to do anything about the issue right now?&lt;/li&gt;
+&lt;li&gt;improve safety nets: how can we catch the bug now and avoid similar bugs in the future?&lt;/li&gt;
+&lt;li&gt;the actual fix&lt;/li&gt;
+&lt;li&gt;post-mortem analysis (if applicable)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 1: Determine the severity 🐛&lt;/h3&gt;
+&lt;p&gt;When a bug (or incident) is discovered the first step is to determine the severity. If you are working on fixing an issue that is already triaged or prioritized, you can skip this step and go straight to step 2.&lt;/p&gt;
+&lt;p&gt;Some questions to consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if the issue revealed itself after a release, should we just roll back or revert?&lt;/li&gt;
+&lt;li&gt;is there anything else we can do right now to restore the service(s)?&lt;/li&gt;
+&lt;li&gt;do we need to inform anyone about the issue (e.g. product owner, customers or your co-workers)?&lt;/li&gt;
+&lt;li&gt;when should the issue be fixed? We should always be mindful to avoid (context switching)[https://blog.doist.com/context-switching/].&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 2: Improve safety nets 🚨&lt;/h3&gt;
+&lt;p&gt;How can we enable our system to catch or highlight the issue – now &lt;em&gt;and&lt;/em&gt; in the future?&lt;/p&gt;
+&lt;p&gt;The answer to this question might include adding one or more of the following safety nets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;improve the linting setup&lt;/li&gt;
+&lt;li&gt;introduce or refine a static type&lt;/li&gt;
+&lt;li&gt;automated tests (unit, integration, end-to-end)&lt;/li&gt;
+&lt;li&gt;add support for feature flags for faster rollbacks&lt;/li&gt;
+&lt;li&gt;improve monitoring, alerting or observability&lt;/li&gt;
+&lt;li&gt;manual test protocol (should be a last resort).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Word of caution:&lt;/strong&gt; establish these safety nets by working &lt;em&gt;within the system&lt;/em&gt; and avoid extensive refactoring that might introduce new regressions.&lt;/p&gt;
+&lt;p&gt;At the end of this step, we hopefully have a red lamp.&lt;/p&gt;
+&lt;p&gt;If you feel you don’t have time to improve your safety nets before fixing the issue then take a step back. How can you get more time to fix this properly? If the production system is in a really bad state could you revert to a previous version? Could you disable the broken feature by flipping a feature flag? Buy yourself some time to improve the system (hopefully it will pay off).&lt;/p&gt;
+&lt;h3&gt;Step 3: The fix ✅&lt;/h3&gt;
+&lt;p&gt;Now is the time to fix the code, infrastructure configuration, or what caused the bug or regression. Turning the lamp green is often the easy part.&lt;/p&gt;
+&lt;h3&gt;Step 4: Post-mortem analysis&lt;/h3&gt;
+&lt;p&gt;You should consider if the severity of the bug merits a post-mortem.&lt;/p&gt;
+&lt;p&gt;A post-mortem is a blame-free analysis and discussion soon after an incident or event has taken place to learn from the experience. It ensures that an incident is documented, that all contributing root cause(s) are well understood, and, especially, that we learn from the incident and that preventive actions are put in place to reduce the likelihood and/or impact of recurrence.&lt;/p&gt;
+&lt;p&gt;I recommend that you trigger a post-mortem in case of data loss of any kind, user-visible downtime or degradation, manual developer intervention (e.g. release rollback) or when we lost a substantial amount of time firefighting.&lt;/p&gt;
+&lt;p&gt;This &lt;a href=&quot;https://www.atlassian.com/incident-management/postmortem&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;guide&lt;/a&gt; seems like a great resource if you want to learn more about incident management using post-mortem.&lt;/p&gt;
+&lt;p&gt;Happy debugging!&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/93d75744a55f1e21c758caa060772e7c/e5166/bug.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 65.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABcBAAMBAAAAAAAAAAAAAAAAAAECAwT/2gAMAwEAAhADEAAAAelFMtaYYf/EABkQAAMBAQEAAAAAAAAAAAAAAAABAhEQEv/aAAgBAQABBQKqwVpszTyuf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAECAQE/Aaf/xAAYEAACAwAAAAAAAAAAAAAAAAAAEAERMf/aAAgBAQAGPwIqHi//xAAaEAADAQADAAAAAAAAAAAAAAAAASEREEGB/9oACAEBAAE/IULS8KeD7BJuN4//2gAMAwEAAgADAAAAEJzf/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQEQ/9oACAEDAQE/EGGf/8QAFREBAQAAAAAAAAAAAAAAAAAAERD/2gAIAQIBAT8QFP/EABsQAQEAAwADAAAAAAAAAAAAAAERACExQXHh/9oACAEBAAE/EA7cWEMHQqTnkx31PsMI8s2U5iMSbsxd/c//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;On September 9, 1947, the world&amp;#39;s first computer bug was recorded by Grace Hopper. It was a real-life moth that was causing issues with the computer’s hardware.
+&quot;
+        title=&quot;On September 9, 1947, the world&amp;#39;s first computer bug was recorded by Grace Hopper. It was a real-life moth that was causing issues with the computer’s hardware.
+&quot;
+        src=&quot;/static/93d75744a55f1e21c758caa060772e7c/1c72d/bug.jpg&quot;
+        srcset=&quot;/static/93d75744a55f1e21c758caa060772e7c/a80bd/bug.jpg 148w,
+/static/93d75744a55f1e21c758caa060772e7c/1c91a/bug.jpg 295w,
+/static/93d75744a55f1e21c758caa060772e7c/1c72d/bug.jpg 590w,
+/static/93d75744a55f1e21c758caa060772e7c/a8a14/bug.jpg 885w,
+/static/93d75744a55f1e21c758caa060772e7c/fbd2c/bug.jpg 1180w,
+/static/93d75744a55f1e21c758caa060772e7c/e5166/bug.jpg 1200w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;On September 9, 1947, the world&amp;#39;s first computer bug was recorded by Grace Hopper. It was a real-life moth that was causing issues with the computer’s hardware.
+&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Guidelines for better pull requests]]></title><description><![CDATA[During my work to align our development efforts at Leo Innovation Lab I stumbled upon 10 tips for better Pull Requests by Mark Seemann (201…]]></description><link>https://skovhus.github.io/blog/better-pull-requests/</link><guid isPermaLink="false">https://skovhus.github.io/blog/better-pull-requests/</guid><pubDate>Wed, 12 Aug 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;During my work to align our development efforts at &lt;a href=&quot;https://leoinnovationlab.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Leo Innovation Lab&lt;/a&gt; I stumbled upon &lt;a href=&quot;http://blog.ploeh.dk/2015/01/15/10-tips-for-better-pull-requests/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;10 tips for better Pull Requests by Mark Seemann (2015)&lt;/a&gt;. The blog post aligned well with our perception of a good pull request (PR) and was a great starting point for discussions.&lt;/p&gt;
 &lt;p&gt;Below is my iteration of the original post. This is a condensed version with a focus on automation, tooling, context, and my personal learnings.&lt;/p&gt;
 &lt;p&gt;The goal of these guidelines is to make the pull request review process easier and will likely:&lt;/p&gt;
 &lt;ul&gt;
